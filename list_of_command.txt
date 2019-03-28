@@ -1,0 +1,129 @@
+sudo !!    исполнение последней команды
+locate     быстрый поиск
+grep       поиск строк в файле
+nl         нумерация вывода Пример: ls|nl
+cd -       возврат в предыдущую папку
+uname -a   информация о системе
+which      проверка существования программы Пример which vim
+htop       показать текущее состояние системы(процессы, память, процессор)
+pkill      завершить процесс по названию Пример pkill htop
+.. в zsh переход на директорию выше
+
+python2 -m SimpleHTTPServer 8000 запуск сервера в текущей папке. по ip адресу будет доступно содержимое этой папке
+curl ifconfig.me узнать внешний ip адресс
+aptitude search vim nl искать пакет
+aptitude search '^vim$' | nl искать пакет по точному названию
+mkdir -p somedir/innerdir создание поддиректории
+grep -n window some.py поиск слова window в файле some.py с выведением номера строки
+
+ls -F --group-directories-first --sort=extension вывод ls как у меня
+
+ctrl-c завершить процесс
+ctrl-z приоставать
+fg возобновить процесс
+
+**************************
+настройки для .zshrc
+bind -p список команд для горячих клавиш
+
+
+###COMON SETTIGNS
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt AUTO_CD
+setopt  HIST_IGNORE_ALL_DUPS
+
+autoload -Uz compinit
+compinit
+setopt auto_cd
+
+autoload -U colors
+colors
+PS1='%B%F{green}[user] %f%b'
+#RPROMPT='%B%F{blue}%d'
+autoload -U promptinit
+promptinit
+###END COMON SETTINGS
+
+
+# пример alias'ов
+alias libre='libreoffice'
+alias ls='echo -e "\e[3m`pwd`\e[0m" && ls -F --group-directories-first --sort=extension' вывод ls как у меня плюс путь курсивом
+# \ls обычный вывод команды если для нее есть alias
+
+
+# пример назначения  горячих клавиш
+bindkey "^[[19~" clear-screen
+bindkey "\C-f" down-line-or-search
+bindkey "\C-y" accept-line
+bindkey "\C-s" backward-char
+
+
+****************************
+
+***********************
+Пример скрипта на Bash
+#!/bin/bash
+
+ls
+pwd
+echo 'hello Bash scripting!'
+***********************
+
+Полезные программы
+mutt -s "Test from mutt" user@yahoo.com < /tmp/message.txt -a /tmp/file.jpg # отравить письмо с вложением из командной строки
+
+crontab -e поместить задание в cron
+
+
+# Пример работы с операторами
+cat some3.txt | sed 's/content/text/' >> some4.txt
+
+
+
+***************************
+Горячие клавиши в bash как у меня(можете на свои переделать у меня здесь все на F1 F2 и т.д)
+В домашнюю директрию положите этот файл(называться должен .inputrc)
+его содержимое
+#"\M-[OP" end-of-line
+#"\e[24~" kill-whole-line
+#"\e[21~" end-of-line
+#"\e[23~" kill-word
+#"\C-r" backward-word
+
+
+#"\e[17~" end-of-line
+#"\e[15~" character-search
+#"\e[15~" beginning-of-line
+"\e[17~" character-search-backward
+"\e[12~" backward-word
+"\e[13~" forward-word
+"\e[11~" kill-word
+"\e[14~" backward-kill-word
+#"\e[11~" backward-kill-word
+"\e[24~" kill-whole-line
+#"\e[23~" previous-history
+#"\e[21~" next-history
+
+"\C-a" backward-char
+"\C-r" forward-char
+
+
+"\C-f" next-history
+"\C-p" previous-history
+"\C-o" accept-line
+"\C-t" delete-char
+#"\C-x" backward-delete-char
+#"\C-a" character-search
+
+
+
+"\e[21~" beginning-of-line
+"\e[23~" end-of-line
+"\e[20~" undo
+"\e[19~" clear-screen
+**************************
+
+
+

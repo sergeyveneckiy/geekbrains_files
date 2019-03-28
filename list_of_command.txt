@@ -82,40 +82,43 @@ cat some3.txt | sed 's/content/text/' >> some4.txt
 
 ***************************
 Горячие клавиши в bash как у меня(можете на свои переделать у меня здесь все на F1 F2 и т.д)
-В домашнюю директрию положите этот файл(называться должен .inputrc)
-его содержимое
+В домашнюю директрию положите этот файл(называться должен .inputrc) 
+Содержимое файла .inputrc(конф. файлы начинаются с точки обычно). Знак # позволяет закомментировать строку. Закомментируйте и расскоментируйте нужные строки по своему усмотрению. По умолчанию здесь расскоментированы строки с закреплением за клавишами ряда F1-F12 различных команд. \e[11 это F1 \e[12 это F2 и т.д.
+
+
 #"\M-[OP" end-of-line
 #"\e[24~" kill-whole-line
 #"\e[21~" end-of-line
 #"\e[23~" kill-word
 #"\C-r" backward-word
 
+#"\e[23~" previous-history
+#"\e[21~" next-history
 
+#"\e[11~" backward-kill-word
 #"\e[17~" end-of-line
 #"\e[15~" character-search
 #"\e[15~" beginning-of-line
+
+#"\C-a" backward-char
+#"\C-r" forward-char
+
+
+#"\C-f" next-history
+#"\C-p" previous-history
+#"\C-o" accept-line
+#"\C-t" delete-char
+#"\C-x" backward-delete-char
+#"\C-a" character-search
+
+
 "\e[17~" character-search-backward
 "\e[12~" backward-word
 "\e[13~" forward-word
 "\e[11~" kill-word
 "\e[14~" backward-kill-word
-#"\e[11~" backward-kill-word
+
 "\e[24~" kill-whole-line
-#"\e[23~" previous-history
-#"\e[21~" next-history
-
-"\C-a" backward-char
-"\C-r" forward-char
-
-
-"\C-f" next-history
-"\C-p" previous-history
-"\C-o" accept-line
-"\C-t" delete-char
-#"\C-x" backward-delete-char
-#"\C-a" character-search
-
-
 
 "\e[21~" beginning-of-line
 "\e[23~" end-of-line

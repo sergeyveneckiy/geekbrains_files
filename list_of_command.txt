@@ -75,7 +75,7 @@ mutt -s "Test from mutt" user@yahoo.com < /tmp/message.txt -a /tmp/file.jpg # о
 crontab -e поместить задание в cron
 
 
-# Пример работы с операторами
+# Пример комбинирования работы команд 
 cat some3.txt | sed 's/content/text/' >> some4.txt
 
 

@@ -1,0 +1,95 @@
+#КОМАНДЫ И НАСТРОЙКИ
+
+alias web2='/home/sergey/webinars/web_command_line2; ls'
+
+setopt AUTO_CD
+
+
+# установка програмы, которая будет открывать файл с опред. расширение
+alias -s pdf='okular'
+alias -s txt='vim'
+
+
+bindkey '\C-a' backward-char
+bindkey '\C-r' forward-char
+
+# показывает клавиши
+showkey -a
+
+# disable control s
+stty -ixon
+
+unsetopt CASE_GLOB #regexp - nosensetive
+
+# повтор аргумент последней команды
+esc .
+
+xmodmap -e 'keysym Alt_L control = Escape Alt_L'
+
+setxkbmap -layout us -variant colemak -option ctrl:nocaps
+
+
+# сортировка по размеру
+ls -lhS 
+
+# сортировка по времени
+ls -ltr 
+
+# все скрытые файлы
+ls -d .*|nl
+
+# только папки
+ls -d */
+
+# определение типа файла
+file ssh.mkv
+
+
+# слайд шоу
+eog ./
+
+
+# календарь
+cal
+cal -3
+cal 2019
+
+
+# создать папку, сразу в нее зайти и показать к ней путь | это нужно поместить в .zshrc
+function mkd {
+    mkdir $1; cd $1; pwd; 
+}
+
+tar -cf filename.tar some1 some2 some3
+tar -cf filename.tar *txt
+tar -tvf filename.tar
+tar -tvf *tar
+
+# untar
+tar -xf  filename.tar
+alias untar='tar -xf'
+
+# create zip file
+zip -r newarc.zip *txt
+unzip
+
+# извлечение файлов в независимости от расширения(zip или tar, можно также дописать извлечение из rar и др.)| это нужно поместить в .zshrc
+function un {
+     unzip $@ 2> /dev/null || tar -xf $@ && ls
+}
+
+#alias -s zip='un'
+#alias -s tar='un'
+
+
+# Команды для перезагрузки выключения и т.д. Осторожно с ними!
+
+#sudo shutdown -P +15 # Выключение через 15 мин
+#sudo shutdown -h 21:00 # Выключение в определен. время
+#alias s1='systemctl poweroff' # Выключение 
+#alias s2='systemctl suspend' # перевод в спящий режим
+#alias s3='systemctl reboot' #  перезагрузка
+
+# программа делающая тоже что man, но в более удобной форме
+tldr tar
+

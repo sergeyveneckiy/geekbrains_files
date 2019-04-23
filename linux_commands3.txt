@@ -8,7 +8,7 @@ function t {
 # возврат в предыдущую папку как у меня (для .zshrc)
 alias n='cd ../; ls;'
 
-# htop
+# htop с сортировкой процессов по потреблению CPU
 alias ht='htop --sort-key=PERCENT_CPU'
 
 

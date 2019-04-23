@@ -15,8 +15,8 @@ alias ht='htop --sort-key=PERCENT_CPU'
 # погода в городе
 ansiweather -l Москва
 
-# поиск
-locate
+# быстрый поиск файла
+locate ssh.mkv
 sudo updatedb # обновить базу данных
 
 # проверка интернет соединения
@@ -33,7 +33,6 @@ sudo parted /dev/sda 'print'
 # запись образа на флешку. Будьте осторожны с этой командой!
 sudo dd if=./ubuntu-18.04.1-live-server-amd64.iso of=/dev/(на этом месте название устройства например sdc)
 ######################
-
 
 
 ###########FFMPEG

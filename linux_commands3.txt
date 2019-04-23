@@ -1,0 +1,88 @@
+# переход в папку как у меня (для .zshrc)
+function t {
+    cd *$@* && ls || cd $1; 
+}
+
+# возврат в предыдущую папку как у меня (для .zshrc)
+alias n='cd ../; ls;'
+
+# htop
+alias ht='htop --sort-key=PERCENT_CPU'
+
+
+# погода в городе
+ansiweather -l Москва
+
+# поиск
+locate
+sudo updatedb # обновить базу данных
+
+# проверка интернет соединения
+ping -c2 ya.ru 
+
+
+##### HARD DRIVE AND USB STICK
+# имена жестких дисков и внешних накопителей
+lsblk
+
+# информация о модели жесткого диска и его разметки(ext4 или ext3 и т.д)
+sudo parted /dev/sda 'print'
+
+# запись образа на флешку. Будьте осторожны с этой командой!
+sudo dd if=./ubuntu-18.04.1-live-server-amd64.iso of=/dev/(на этом месте название устройства например sdc)
+######################
+
+
+
+###########FFMPEG
+ffmpeg -i some.mp4 some.mp3
+
+# delete audio from video
+ffmpeg -i dopolnenaya.mp4 -c copy -an example-nosound.mkv
+
+#add audio to video
+ffmpeg -i musicshort.wav -i movie.avi final_video.avi
+
+# пример того что должен содержать файл, чтобы склеить видео указанные в нем
+$ cat mylist.txt
+file '/path/to/file1'
+file '/path/to/file2'
+file '/path/to/file3'
+
+# команда склейки видео
+ffmpeg -f concat -safe 0 -i "mylist.txt" -c copy "video.mp4"
+
+###############
+
+
+# поиск файлов больше чем n гигабайт (для .zshrc)
+# пример использования - fbig 8
+function fbig {
+    find ./ -xdev -type f -size +$@G | sed -e 's/"/"\\""/g' -e 's/.*/"&"/' |
+    xargs du -sh | sort -rn | sed -e 's/.*\.$/Files not found/g'
+}
+
+# последние n файлов (для .zshrc)
+# пример использования - frec 10 
+function frec {
+    ls -Art | tail -n $@ | sed -e 's/"/"\\""/g' -e 's/.*/"&"/' |
+    xargs stat -c "%y %n" | sort -rn 
+}
+
+# удалить все файлы в текущей папке кроме одного файла (для .zshrc). Осторожно с этой командой!
+# пример использования rmbut some3.txt
+function rmbut {
+    find . ! -name $@ -type f -exec rm -f {} +
+}
+
+
+# сайт где объясняется назначение параметров, с которыми можно запускать утилиты командной строки
+https://explainshell.com/
+
+
+# программа для анализа исходного кода проекта, в частности подсчитывает количество строчек кода в проекте
+cloc
+
+
+# установка обоев рабочего стола через командную строку
+feh --bg-scale /home/honeyguide/Pictures/art_wallpappers/astronauts-spaceship.jpg

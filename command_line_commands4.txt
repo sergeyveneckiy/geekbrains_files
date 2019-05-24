@@ -1,0 +1,140 @@
+I
+##############start part about systemd
+systemd --version
+
+# команда для поиска всех необходимых файлов
+whereis 
+whereis systemd
+
+# Analyze systemd boot process.
+systemd-analyze
+
+# проверка скорости загрузки сервисов
+systemd-analyze blame
+
+# проверка всех доступных сервисов
+list-unit-files
+
+# проверка всех запущенных процессов
+systemctl list-units
+
+# не запустившиеся процессы
+systemctl --failed
+
+
+systemctl is-enabled nginx
+systemctl is-active nginx 
+
+# check only running process
+systemctl list-units --type=service --state=running
+
+
+
+# list all enabled
+systemctl list-unit-files | grep enabled |nl
+
+systemctl status nginx
+systemctl stop nginx
+systemctl restart nginx
+systemctl reload nginx
+systemctl start nginx
+systemctl disable nginx
+
+# сведения о запущенном сервисе
+systemctl show nginx
+
+# список зависимостей сервиса
+systemctl list-dependencies nginx
+
+
+# значения systemd
+# enabled - explicitly installed
+# static - installed as dependency
+# disabled - not installed
+# masked - Masking a service will prevent it from starting. 
+# Generally speaking, restart will terminate the service in question and restart it; reload will only reload the configuration file.
+
+
+# можно управлять перезагрузкой и т.д.(Осторожно с этими командами разбиритесь с ними детально прежде чем применять!)
+# systemctl reboot
+# systemctl halt
+# systemctl suspend # suspend to ram; some folks call this "sleep"
+# systemctl hibernate # suspend to disk; includes power-off, looks like shutdown 
+# systemctl hybrid-sleep
+
+# получить данные конфигурация запуска сервиса nginx(не путайте с конф. файлом nginx!)
+systemctl cat nginx
+
+# информация о системе
+hostnamectl
+
+# log системы за последний час
+journalctl --since "1 hour ago"
+
+
+# run levels
+    Runlevel 0 : Shut down and Power off the system.
+    Runlevel 1 : Rescue?Maintainance Mode.
+    Runlevel 3 : multiuser, no-graphic system.
+    Runlevel 4 : multiuser, no-graphic system.
+    Runlevel 5 : multiuser, graphical system.
+    Runlevel 6 : Shutdown and Reboot the machine.
+
+##############end part about systemd
+
+
+
+
+II
+################## x window system
+
+# список доступных режимов
+xrandr
+
+# поменять разрешение экрана
+xrandr --output HDMI-0 --mode 1360x768
+
+
+# настройки клавиатуры
+xmodmap и setxkbmap 
+
+################## end x window system
+
+
+
+III
+################### Различные команды
+
+# текущая дата и время
+date
+
+# перевести набор длинной командной строке в редакторе
+fc 
+
+#install duration to eog 
+gsettings set org.gnome.eog.fullscreen seconds 10
+
+#create slide show using images from current directory
+eog --slide-show ./  
+
+# посмотреть файл истории
+cat ~/.histfile | nl
+
+# вывести версию дистрибутива
+cat /etc/*-release
+
+# конвертация кода python2 в python3
+2to3 exp.py
+
+2to3 -w some_python2.py
+
+# посмотреть какая программа слушает порт
+lsof -i :80
+
+
+# взятие скриншота через командную строку. плюс указывается задержка 5 сек перед снимком
+scrot -d 5 ~/Pictures/new.jpg
+
+
+# вывести список файлов и дерево папок в удобном виде(расскоментируйте если нужно)
+#alias lsff='echo "\nFiles:"; ls -p | grep -v /|column; echo "\nDirectories-> "; tree -d -L 2|column; echo "\n";'
